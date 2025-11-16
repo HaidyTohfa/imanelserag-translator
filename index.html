@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Iman Elserag – Arabisch–Deutsch Übersetzerin &amp; Dolmetscherin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      color: #222;
+      background: #f7f7f7;
+    }
+    a { text-decoration: none; color: inherit; }
+    button { font: inherit; }
+
+    /* Top bar */
+    .topbar {
+      background: #0d2538;
+      color: #fff;
+      font-size: 0.9rem;
+      padding: 0.4rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .topbar-left span {
+      margin-right: 1rem;
+    }
+
+    .lang-switch {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+    }
+    .lang-btn {
+      border: none;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+    .lang-btn.active {
+      background: #c4921f;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #ffffff;
+      border-bottom: 1px solid #ddd;
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #0d2538;
+    }
+    .logo span {
+      color: #c4921f;
+    }
+    .nav-links a {
+      margin-left: 1.2rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #333;
+    }
+    .nav-links a:hover {
+      color: #c4921f;
+    }
+
+    /* Layout helpers */
+    .section {
+      padding: 3rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      color: #0d2538;
+    }
+    .section p {
+      max-width: 800px;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #0d2538, #193a59);
+      color: #fff;
+      padding: 4rem 1.5rem 3rem 1.5rem;
+    }
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 2rem;
+    }
+    .hero h1 {
+      font-size: 2.3rem;
+      margin-bottom: 1rem;
+    }
+    .hero h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+    .hero-list li {
+      margin-left: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+    .hero-cta {
+      margin-top: 1.5rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: #c4921f;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #fff;
+      margin-left: 0.7rem;
+    }
+    .hero-card {
+      background: #fff;
+      color: #111;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+      text-align: center;
+    }
+
+    .profile-photo {
+      width: 100%;
+      max-width: 220px;
+      height: auto;
+      border-radius: 999px;
+      display: block;
+      margin: 0 auto 1rem auto;
+      object-fit: cover;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    }
+    .profile-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #0d2538;
+      margin-bottom: 0.2rem;
+    }
+    .profile-title {
+      font-size: 0.95rem;
+      margin-bottom: 0.6rem;
+      color: #555;
+    }
+
+    /* Services */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: #fff;
+      padding: 1.4rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .card h3 {
+      margin-bottom: 0.5rem;
+      color: #0d2538;
+    }
+    .card p {
+      font-size: 0.95rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      background: #e5edf6;
+      color: #193a59;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Locations */
+    .location-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .location {
+      background: #fff;
+      padding: 1.2rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      font-size: 0.95rem;
+    }
+    .location h3 {
+      margin-bottom: 0.4rem;
+      color: #0d2538;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background: #ffffff;
+      border-top: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .testimonial-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .testimonial {
+      background: #fdfdfd;
+      border-radius: 0.75rem;
+      padding: 1.3rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      font-size: 0.9rem;
+    }
+    .testimonial strong {
+      display: block;
+      margin-top: 0.6rem;
+      color: #0d2538;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2rem;
+    }
+    form label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.2rem;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.6rem 0.7rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      margin-bottom: 0.8rem;
+      font: inherit;
+    }
+    form textarea { min-height: 120px; resize: vertical; }
+
+    /* Footer */
+    footer {
+      background: #0d2538;
+      color: #fff;
+      font-size: 0.85rem;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    /* RTL adjustments */
+    html[dir="rtl"] body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Naskh Arabic", "Noto Sans Arabic", "Amiri", sans-serif;
+    }
+    html[dir="rtl"] .hero-inner,
+    html[dir="rtl"] .contact-grid {
+      direction: rtl;
+    }
+    html[dir="rtl"] .hero-list li {
+      margin-left: 0;
+      margin-right: 1.2rem;
+    }
+    html[dir="rtl"] .navbar {
+      flex-direction: row-reverse;
+    }
+    html[dir="rtl"] .nav-links a {
+      margin-left: 0;
+      margin-right: 1.2rem;
+    }
+    html[dir="rtl"] .topbar {
+      flex-direction: row-reverse;
+    }
+    html[dir="rtl"] .topbar-left span {
+      margin-right: 0;
+      margin-left: 1rem;
+    }
+    html[dir="rtl"] .section h2,
+    html[dir="rtl"] .section p {
+      text-align: right;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none; /* simple version: no mobile menu */
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Contact Bar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <span data-i18n="top_contact">Tel.: +43 650 0000000 · E-Mail: iman@example.com</span>
+    </div>
+    <div class="lang-switch">
+      <span data-i18n="lang_label">Sprache:</span>
+      <button class="lang-btn active" data-lang="de">DE</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="ar">العربية</button>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="logo"><span data-i18n="logo_main">Iman</span><span>Elserag</span></div>
+    <nav class="nav-links">
+      <a href="#home" data-i18n="nav_home">Home</a>
+      <a href="#services" data-i18n="nav_services">Leistungen</a>
+      <a href="#fields" data-i18n="nav_fields">Fachgebiete</a>
+      <a href="#locations" data-i18n="nav_locations">Standort</a>
+      <a href="#testimonials" data-i18n="nav_testimonials">Referenzen</a>
+      <a href="#contact" data-i18n="nav_contact">Kontakt</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="hero-inner">
+      <div>
+        <h1 data-i18n="hero_title">
+          Arabisch–Deutsch Übersetzungen &amp; Dolmetschen in ganz Österreich
+        </h1>
+        <h3 data-i18n="hero_subtitle">
+          Iman Elserag – professionelle Übersetzerin und Dolmetscherin für Arabisch ↔ Deutsch, mit Sitz in Klagenfurt.
+        </h3>
+        <ul class="hero-list">
+          <li data-i18n="hero_list1">
+            Übersetzungen von Deutsch nach Arabisch und von Arabisch nach Deutsch
+          </li>
+          <li data-i18n="hero_list2">
+            Unterstützung bei Behördenwegen, Verträgen und offiziellen Dokumenten
+          </li>
+          <li data-i18n="hero_list3">
+            Online und vor Ort – flexibel in ganz Österreich
+          </li>
+        </ul>
+        <div class="hero-cta">
+          <a href="#contact" class="btn" data-i18n="hero_cta1">Anfrage &amp; Angebot</a>
+          <a href="#services" class="btn btn-outline" data-i18n="hero_cta2">Leistungen ansehen</a>
+        </div>
+      </div>
+      <div>
+        <div class="hero-card">
+          <!-- Replace iman.jpg with your real file name -->
+          <img src="iman.jpg" alt="Porträt von Iman Elserag" class="profile-photo" />
+          <div class="profile-name" data-i18n="profile_name">Iman Elserag</div>
+          <div class="profile-title" data-i18n="profile_title">
+            Arabisch–Deutsch Übersetzerin &amp; Dolmetscherin
+          </div>
+          <p data-i18n="profile_location"><strong>Standort:</strong> Klagenfurt am Wörthersee</p>
+          <p data-i18n="profile_region"><strong>Region:</strong> Online &amp; Einsätze in ganz Österreich</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="section">
+    <h2 data-i18n="services_title">Übersetzungs- &amp; Dolmetschleistungen</h2>
+    <p data-i18n="services_intro">
+      Iman bietet professionelle Sprachdienstleistungen für Privatpersonen, Unternehmen und Institutionen – mit Fokus auf Arabisch und Deutsch.
+    </p>
+    <div class="cards">
+      <div class="card">
+        <div class="badge" data-i18n="service1_badge">Übersetzung</div>
+        <h3 data-i18n="service1_title">Schriftliche Übersetzungen</h3>
+        <p data-i18n="service1_text">
+          Urkunden, Zeugnisse, Verträge, Bescheide, Korrespondenz, Lebensläufe und weitere Dokumente von Arabisch nach Deutsch und umgekehrt.
+        </p>
+      </div>
+      <div class="card">
+        <div class="badge" data-i18n="service2_badge">Dolmetschen</div>
+        <h3 data-i18n="service2_title">Dolmetschen vor Ort &amp; online</h3>
+        <p data-i18n="service2_text">
+          Begleitung zu Behörden, Ärzt:innen, Notar:innen, Gerichtsterminen oder Online-Besprechungen.
+        </p>
+      </div>
+      <div class="card">
+        <div class="badge" data-i18n="service3_badge">Qualität</div>
+        <h3 data-i18n="service3_title">Persönliche Betreuung</h3>
+        <p data-i18n="service3_text">
+          Direkter Kontakt mit der Übersetzerin, klare Absprachen, transparente Preise und vertraulicher Umgang mit sensiblen Unterlagen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fields of Expertise -->
+  <section id="fields" class="section">
+    <h2 data-i18n="fields_title">Fachgebiete</h2>
+    <p data-i18n="fields_intro">
+      Dank ihrer Erfahrung deckt Iman verschiedene Fachgebiete ab – von Alltagsdokumenten bis hin zu speziellen Texten.
+    </p>
+    <div class="cards">
+      <div class="card">
+        <h3 data-i18n="field1_title">Alltag &amp; Migration</h3>
+        <p data-i18n="field1_text">
+          Aufenthaltstitel, Meldezettel, Bestätigungen, Anträge bei Behörden und soziale Einrichtungen.
+        </p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="field2_title">Recht &amp; Verträge</h3>
+        <p data-i18n="field2_text">
+          Mietverträge, Kaufverträge, Vollmachten, Gerichtsbeschlüsse, Vereinbarungen.
+        </p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="field3_title">Bildung &amp; Arbeit</h3>
+        <p data-i18n="field3_text">
+          Zeugnisse, Diplome, Bewerbungsunterlagen, Arbeitsverträge, Referenzen.
+        </p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="field4_title">Gesundheit &amp; Soziales</h3>
+        <p data-i18n="field4_text">
+          Ärztliche Befunde, Bestätigungen, Gutachten, Informationsmaterial für Patient:innen.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Locations -->
+  <section id="locations" class="section">
+    <h2 data-i18n="locations_title">Standort &amp; Einsatzgebiet</h2>
+    <p data-i18n="locations_intro">
+      Iman lebt in Klagenfurt am Wörthersee, bietet ihre Leistungen jedoch für ganz Österreich an – persönlich oder online.
+    </p>
+    <div class="location-grid">
+      <div class="location">
+        <h3 data-i18n="location1_title">Klagenfurt am Wörthersee</h3>
+        <p data-i18n="location1_text1">Termine nach Vereinbarung.</p>
+        <p data-i18n="location1_text2">Treffen in Klagenfurt oder Umgebung möglich.</p>
+      </div>
+      <div class="location">
+        <h3 data-i18n="location2_title">Ganz Österreich</h3>
+        <p data-i18n="location2_text1">
+          Online-Übersetzungen und Videodolmetschen – unabhängig vom Bundesland.
+        </p>
+        <p data-i18n="location2_text2">
+          Bei Bedarf Anreise für Termine (nach Absprache).
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="section testimonials">
+    <h2 data-i18n="testimonials_title">Feedback von Kund:innen</h2>
+    <p data-i18n="testimonials_intro">
+      Einige Eindrücke von Menschen, die bereits mit Iman zusammengearbeitet haben.
+    </p>
+    <div class="testimonial-list">
+      <div class="testimonial">
+        <p data-i18n="test1_text">
+          &ldquo;Sehr freundlich und hilfsbereit – sie hat mir bei meinen Dokumenten für den Aufenthaltstitel sehr geholfen.&rdquo;
+        </p>
+        <strong data-i18n="test1_name">— Klientin aus Kärnten</strong>
+      </div>
+      <div class="testimonial">
+        <p data-i18n="test2_text">
+          &ldquo;Schnelle Übersetzung und genaue Erklärung der Fachbegriffe. Ich habe mich gut verstanden gefühlt.&rdquo;
+        </p>
+        <strong data-i18n="test2_name">— Kunde aus Wien</strong>
+      </div>
+      <div class="testimonial">
+        <p data-i18n="test3_text">
+          &ldquo;Zuverlässig, pünktlich und professionell – klare Empfehlung für Arabisch–Deutsch.&rdquo;
+        </p>
+        <strong data-i18n="test3_name">— Soziale Einrichtung</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <h2 data-i18n="contact_title">Kontakt &amp; Dokumente senden</h2>
+    <div class="contact-grid">
+      <div>
+        <p data-i18n="contact_intro">
+          Sie möchten ein Angebot oder haben Fragen? Schreiben Sie Iman mit einer kurzen Beschreibung Ihrer Dokumente.
+        </p>
+        <p><strong>E-Mail:</strong> iman@example.com</p>
+        <p><strong data-i18n="contact_phone_label">Telefon:</strong> +43 650 0000000</p>
+        <p><strong data-i18n="contact_how_title">Wie sende ich meine Dokumente?</strong></p>
+        <ul>
+          <li data-i18n="contact_how_1">
+            Sie können Ihre Unterlagen direkt per E-Mail als PDF/JPG senden.
+          </li>
+          <li data-i18n="contact_how_2">
+            Oder Sie laden sie z.&nbsp;B. auf Google Drive/Dropbox hoch und schicken den Link im Formular.
+          </li>
+        </ul>
+      </div>
+      <div>
+        <form>
+          <label for="name" data-i18n="form_name_label">Name</label>
+          <input id="name" type="text" required data-i18n-placeholder="form_name_placeholder" />
+
+          <label for="email" data-i18n="form_email_label">E-Mail</label>
+          <input id="email" type="email" required data-i18n-placeholder="form_email_placeholder" />
+
+          <label for="message" data-i18n="form_message_label">Nachricht / Beschreibung der Dokumente</label>
+          <textarea id="message" data-i18n-placeholder="form_message_placeholder"></textarea>
+
+          <label for="link" data-i18n="form_link_label">Link zu Ihren Dokumenten (optional)</label>
+          <input id="link" type="url" data-i18n-placeholder="form_link_placeholder" />
+
+          <!-- Hinweis: Dieses Formular verschickt NICHT automatisch Daten. -->
+          <button type="submit" class="btn" data-i18n="form_button">
+            Anfrage absenden (Demo)
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <span data-i18n="footer_text">
+      &copy; 2025 Iman Elserag – Arabisch–Deutsch Übersetzerin &amp; Dolmetscherin. Klagenfurt &amp; ganz Österreich.
+    </span>
+  </footer>
+
+  <script>
+    const translations = {
+      de: {
+        top_contact: "Tel.: +43 650 0000000 · E-Mail: iman@example.com",
+        lang_label: "Sprache:",
+        logo_main: "Iman",
+
+        nav_home: "Home",
+        nav_services: "Leistungen",
+        nav_fields: "Fachgebiete",
+        nav_locations: "Standort",
+        nav_testimonials: "Referenzen",
+        nav_contact: "Kontakt",
+
+        hero_title: "Arabisch–Deutsch Übersetzungen &amp; Dolmetschen in ganz Österreich",
+        hero_subtitle: "Iman Elserag – professionelle Übersetzerin und Dolmetscherin für Arabisch ↔ Deutsch, mit Sitz in Klagenfurt.",
+        hero_list1: "Übersetzungen von Deutsch nach Arabisch und von Arabisch nach Deutsch",
+        hero_list2: "Unterstützung bei Behördenwegen, Verträgen und offiziellen Dokumenten",
+        hero_list3: "Online und vor Ort – flexibel in ganz Österreich",
+        hero_cta1: "Anfrage &amp; Angebot",
+        hero_cta2: "Leistungen ansehen",
+
+        profile_name: "Iman Elserag",
+        profile_title: "Arabisch–Deutsch Übersetzerin &amp; Dolmetscherin",
+        profile_location: "<strong>Standort:</strong> Klagenfurt am Wörthersee",
+        profile_region: "<strong>Region:</strong> Online &amp; Einsätze in ganz Österreich",
+
+        services_title: "Übersetzungs- &amp; Dolmetschleistungen",
+        services_intro: "Iman bietet professionelle Sprachdienstleistungen für Privatpersonen, Unternehmen und Institutionen – mit Fokus auf Arabisch und Deutsch.",
+        service1_badge: "Übersetzung",
+        service1_title: "Schriftliche Übersetzungen",
+        service1_text: "Urkunden, Zeugnisse, Verträge, Bescheide, Korrespondenz, Lebensläufe und weitere Dokumente von Arabisch nach Deutsch und umgekehrt.",
+        service2_badge: "Dolmetschen",
+        service2_title: "Dolmetschen vor Ort &amp; online",
+        service2_text: "Begleitung zu Behörden, Ärzt:innen, Notar:innen, Gerichtsterminen oder Online-Besprechungen.",
+        service3_badge: "Qualität",
+        service3_title: "Persönliche Betreuung",
+        service3_text: "Direkter Kontakt mit der Übersetzerin, klare Absprachen, transparente Preise und vertraulicher Umgang mit sensiblen Unterlagen.",
+
+        fields_title: "Fachgebiete",
+        fields_intro: "Dank ihrer Erfahrung deckt Iman verschiedene Fachgebiete ab – von Alltagsdokumenten bis hin zu speziellen Texten.",
+        field1_title: "Alltag &amp; Migration",
+        field1_text: "Aufenthaltstitel, Meldezettel, Bestätigungen, Anträge bei Behörden und soziale Einrichtungen.",
+        field2_title: "Recht &amp; Verträge",
+        field2_text: "Mietverträge, Kaufverträge, Vollmachten, Gerichtsbeschlüsse, Vereinbarungen.",
+        field3_title: "Bildung &amp; Arbeit",
+        field3_text: "Zeugnisse, Diplome, Bewerbungsunterlagen, Arbeitsverträge, Referenzen.",
+        field4_title: "Gesundheit &amp; Soziales",
+        field4_text: "Ärztliche Befunde, Bestätigungen, Gutachten, Informationsmaterial für Patient:innen.",
+
+        locations_title: "Standort &amp; Einsatzgebiet",
+        locations_intro: "Iman lebt in Klagenfurt am Wörthersee, bietet ihre Leistungen jedoch für ganz Österreich an – persönlich oder online.",
+        location1_title: "Klagenfurt am Wörthersee",
+        location1_text1: "Termine nach Vereinbarung.",
+        location1_text2: "Treffen in Klagenfurt oder Umgebung möglich.",
+        location2_title: "Ganz Österreich",
+        location2_text1: "Online-Übersetzungen und Videodolmetschen – unabhängig vom Bundesland.",
+        location2_text2: "Bei Bedarf Anreise für Termine (nach Absprache).",
+
+        testimonials_title: "Feedback von Kund:innen",
+        testimonials_intro: "Einige Eindrücke von Menschen, die bereits mit Iman zusammengearbeitet haben.",
+        test1_text: "„Sehr freundlich und hilfsbereit – sie hat mir bei meinen Dokumenten für den Aufenthaltstitel sehr geholfen.“",
+        test1_name: "— Klientin aus Kärnten",
+        test2_text: "„Schnelle Übersetzung und genaue Erklärung der Fachbegriffe. Ich habe mich gut verstanden gefühlt.“",
+        test2_name: "— Kunde aus Wien",
+        test3_text: "„Zuverlässig, pünktlich und professionell – klare Empfehlung für Arabisch–Deutsch.“",
+        test3_name: "— Soziale Einrichtung",
+
+        contact_title: "Kontakt &amp; Dokumente senden",
+        contact_intro: "Sie möchten ein Angebot oder haben Fragen? Schreiben Sie Iman mit einer kurzen Beschreibung Ihrer Dokumente.",
+        contact_phone_label: "Telefon:",
+        contact_how_title: "Wie sende ich meine Dokumente?",
+        contact_how_1: "Sie können Ihre Unterlagen direkt per E-Mail als PDF/JPG senden.",
+        contact_how_2: "Oder Sie laden sie z.&nbsp;B. auf Google Drive/Dropbox hoch und schicken den Link im Formular.",
+
+        form_name_label: "Name",
+        form_name_placeholder: "Ihr Name",
+        form_email_label: "E-Mail",
+        form_email_placeholder: "Ihre E-Mail-Adresse",
+        form_message_label: "Nachricht / Beschreibung der Dokumente",
+        form_message_placeholder: "Welche Dokumente möchten Sie übersetzen lassen?",
+        form_link_label: "Link zu Ihren Dokumenten (optional)",
+        form_link_placeholder: "z.B. Google Drive / Dropbox Link",
+        form_button: "Anfrage absenden (Demo)",
+
+        footer_text: "&copy; 2025 Iman Elserag – Arabisch–Deutsch Übersetzerin &amp; Dolmetscherin. Klagenfurt &amp; ganz Österreich."
+      },
+
+      en: {
+        top_contact: "Tel.: +43 650 0000000 · E-mail: iman@example.com",
+        lang_label: "Language:",
+        logo_main: "Iman",
+
+        nav_home: "Home",
+        nav_services: "Services",
+        nav_fields: "Areas of expertise",
+        nav_locations: "Location",
+        nav_testimonials: "Testimonials",
+        nav_contact: "Contact",
+
+        hero_title: "Arabic–German translation & interpreting across Austria",
+        hero_subtitle: "Iman Elserag – professional Arabic ↔ German translator and interpreter based in Klagenfurt.",
+        hero_list1: "Translations from German into Arabic and from Arabic into German",
+        hero_list2: "Support with authorities, contracts and official documents",
+        hero_list3: "Online and on-site – flexible throughout Austria",
+        hero_cta1: "Request & quote",
+        hero_cta2: "View services",
+
+        profile_name: "Iman Elserag",
+        profile_title: "Arabic–German translator & interpreter",
+        profile_location: "<strong>Location:</strong> Klagenfurt am Wörthersee",
+        profile_region: "<strong>Region:</strong> Online & assignments throughout Austria",
+
+        services_title: "Translation & interpreting services",
+        services_intro: "Iman offers professional language services for private clients, companies and institutions – specialising in Arabic and German.",
+        service1_badge: "Translation",
+        service1_title: "Written translations",
+        service1_text: "Certificates, diplomas, contracts, official decisions, correspondence, CVs and other documents from Arabic to German and vice versa.",
+        service2_badge: "Interpreting",
+        service2_title: "On-site & online interpreting",
+        service2_text: "Accompaniment to public authorities, doctors, notaries, court appointments or online meetings.",
+        service3_badge: "Quality",
+        service3_title: "Personal support",
+        service3_text: "Direct contact with your translator, clear agreements, transparent prices and confidential handling of sensitive documents.",
+
+        fields_title: "Areas of expertise",
+        fields_intro: "With her experience, Iman covers a wide range of topics – from everyday documents to specialised texts.",
+        field1_title: "Everyday life & migration",
+        field1_text: "Residence permits, registration forms, confirmations, applications to public authorities and social services.",
+        field2_title: "Law & contracts",
+        field2_text: "Tenancy agreements, purchase contracts, powers of attorney, court decisions, agreements.",
+        field3_title: "Education & work",
+        field3_text: "School reports, diplomas, application documents, employment contracts, references.",
+        field4_title: "Health & social sector",
+        field4_text: "Medical reports, confirmations, expert opinions, information material for patients.",
+
+        locations_title: "Location & service area",
+        locations_intro: "Iman lives in Klagenfurt am Wörthersee but offers her services throughout Austria – in person or online.",
+        location1_title: "Klagenfurt am Wörthersee",
+        location1_text1: "Appointments by arrangement.",
+        location1_text2: "Meetings in Klagenfurt or the surrounding area possible.",
+        location2_title: "All of Austria",
+        location2_text1: "Online translations and video interpreting – regardless of federal state.",
+        location2_text2: "Travel to appointments possible if required (by agreement).",
+
+        testimonials_title: "Client feedback",
+        testimonials_intro: "Here are some impressions from people who have already worked with Iman.",
+        test1_text: "\"Very kind and helpful – she supported me a lot with the documents for my residence permit.\"",
+        test1_name: "— Client from Carinthia",
+        test2_text: "\"Fast translation and clear explanation of technical terms. I felt well understood.\"",
+        test2_name: "— Client from Vienna",
+        test3_text: "\"Reliable, punctual and professional – a clear recommendation for Arabic–German.\"",
+        test3_name: "— Social organisation",
+
+        contact_title: "Contact & send documents",
+        contact_intro: "Would you like a quote or do you have questions? Send Iman a short description of your documents.",
+        contact_phone_label: "Phone:",
+        contact_how_title: "How can I send my documents?",
+        contact_how_1: "You can send your files directly by e-mail as PDF/JPG.",
+        contact_how_2: "Or upload them to e.g. Google Drive/Dropbox and include the link in the form.",
+
+        form_name_label: "Name",
+        form_name_placeholder: "Your name",
+        form_email_label: "E-mail",
+        form_email_placeholder: "Your e-mail address",
+        form_message_label: "Message / description of documents",
+        form_message_placeholder: "Which documents would you like to have translated?",
+        form_link_label: "Link to your documents (optional)",
+        form_link_placeholder: "e.g. Google Drive / Dropbox link",
+        form_button: "Send request (demo)",
+
+        footer_text: "&copy; 2025 Iman Elserag – Arabic–German translator & interpreter. Klagenfurt & all of Austria."
+      },
+
+      ar: {
+        top_contact: "هاتف: ‎+43 650 0000000 · بريد إلكتروني: iman@example.com",
+        lang_label: "اللغة:",
+        logo_main: "إيمان",
+
+        nav_home: "الرئيسية",
+        nav_services: "الخدمات",
+        nav_fields: "مجالات التخصص",
+        nav_locations: "الموقع",
+        nav_testimonials: "آراء العملاء",
+        nav_contact: "التواصل",
+
+        hero_title: "خدمات الترجمة والتحرير الفوري عربي – ألماني في جميع أنحاء النمسا",
+        hero_subtitle: "إيمان السراج – مترجمة ومترجمة فورية محترفة بين العربية والألمانية، مقرّها في كلاغنفورت.",
+        hero_list1: "ترجمة من الألمانية إلى العربية ومن العربية إلى الألمانية",
+        hero_list2: "مساعدة في التعامل مع الدوائر الرسمية والعقود والوثائق الرسمية",
+        hero_list3: "خدمة عبر الإنترنت أو حضورياً في مختلف مدن النمسا",
+        hero_cta1: "طلب عرض سعر",
+        hero_cta2: "عرض الخدمات",
+
+        profile_name: "إيمان السراج",
+        profile_title: "مترجمة ومترجمة فورية عربي – ألماني",
+        profile_location: "<strong>الموقع:</strong> كلاغنفورت أم ورترزي",
+        profile_region: "<strong>مجال العمل:</strong> عبر الإنترنت وفي جميع أنحاء النمسا",
+
+        services_title: "خدمات الترجمة والتحرير الفوري",
+        services_intro: "تقدّم إيمان خدمات لغوية احترافية للأفراد والشركات والمؤسسات، مع تركيز خاص على اللغتين العربية والألمانية.",
+        service1_badge: "ترجمة",
+        service1_title: "ترجمة مكتوبة",
+        service1_text: "شهادات، عقود، قرارات رسمية، مراسلات، سير ذاتية وغيرها من الوثائق من العربية إلى الألمانية وبالعكس.",
+        service2_badge: "ترجمة فورية",
+        service2_title: "ترجمة فورية حضورياً وعبر الإنترنت",
+        service2_text: "مرافقة إلى الدوائر الرسمية، الأطباء، كتاب العدل، المحاكم أو الاجتماعات عبر الإنترنت.",
+        service3_badge: "جودة",
+        service3_title: "متابعة شخصية",
+        service3_text: "تواصل مباشر مع المترجمة، اتفاقات واضحة، أسعار شفافة، وسرية تامة في التعامل مع المستندات الحساسة.",
+
+        fields_title: "مجالات التخصص",
+        fields_intro: "بفضل خبرتها تغطي إيمان عدة مجالات – من الوثائق اليومية إلى النصوص المتخصصة.",
+        field1_title: "الحياة اليومية والهجرة",
+        field1_text: "تصاريح الإقامة، استمارات التسجيل، الشهادات الرسمية، الطلبات للدوائر الحكومية والمؤسسات الاجتماعية.",
+        field2_title: "القانون والعقود",
+        field2_text: "عقود الإيجار والبيع، الوكالات، الأحكام القضائية، والاتفاقيات المختلفة.",
+        field3_title: "التعليم والعمل",
+        field3_text: "الشهادات المدرسية والجامعية، وثائق التقديم للوظائف، عقود العمل، خطابات التزكية.",
+        field4_title: "الصحة والقطاع الاجتماعي",
+        field4_text: "تقارير طبية، شهادات، تقارير خبرة، مواد معلوماتية للمرضى.",
+
+        locations_title: "الموقع ونطاق الخدمة",
+        locations_intro: "تقيم إيمان في كلاغنفورت أم ورترزي، لكنها تقدّم خدماتها في جميع أنحاء النمسا – حضورياً وعبر الإنترنت.",
+        location1_title: "كلاغنفورت أم ورترزي",
+        location1_text1: "المواعيد حسب الاتفاق.",
+        location1_text2: "إمكانية اللقاء في كلاغنفورت أو المناطق المجاورة.",
+        location2_title: "جميع أنحاء النمسا",
+        location2_text1: "ترجمة عبر الإنترنت وترجمة فورية عبر الفيديو بغضّ النظر عن الولاية.",
+        location2_text2: "إمكانية السفر للمواعيد عند الحاجة (حسب الاتفاق).",
+
+        testimonials_title: "آراء العملاء",
+        testimonials_intro: "بعض الانطباعات من أشخاص ومؤسسات عملوا مع إيمان من قبل.",
+        test1_text: "«لطيفة ومتعاونة جداً – ساعدتني كثيراً في مستندات تصريح الإقامة.»",
+        test1_name: "— عميلة من ولاية كيرنتن",
+        test2_text: "«ترجمة سريعة وشرح واضح للمصطلحات المتخصصة. شعرت بأنني مفهومة ومُقدَّرة.»",
+        test2_name: "— عميل من فيينا",
+        test3_text: "«ملتزمة ودقيقة ومحترفة – أنصح بها بشدة في الترجمة بين العربية والألمانية.»",
+        test3_name: "— مؤسسة اجتماعية",
+
+        contact_title: "التواصل وإرسال المستندات",
+        contact_intro: "هل ترغب في الحصول على عرض سعر أو لديك أسئلة؟ أرسل لإيمان وصفاً قصيراً للمستندات التي تريد ترجمتها.",
+        contact_phone_label: "هاتف:",
+        contact_how_title: "كيف أرسل المستندات؟",
+        contact_how_1: "يمكنك إرسال الملفات مباشرة عبر البريد الإلكتروني بصيغة PDF أو JPG.",
+        contact_how_2: "أو يمكنك رفعها على جوجل درايف أو دروبوكس وإرسال الرابط في النموذج.",
+
+        form_name_label: "الاسم",
+        form_name_placeholder: "اسمك",
+        form_email_label: "البريد الإلكتروني",
+        form_email_placeholder: "عنوان بريدك الإلكتروني",
+        form_message_label: "الرسالة / وصف المستندات",
+        form_message_placeholder: "ما هي المستندات التي ترغب في ترجمتها؟",
+        form_link_label: "رابط المستندات (اختياري)",
+        form_link_placeholder: "مثال: رابط جوجل درايف أو دروبوكس",
+        form_button: "إرسال الطلب (تجريبي)",
+
+        footer_text: "&copy; 2025 إيمان السراج – مترجمة ومترجمة فورية عربي – ألماني. كلاغنفورت وجميع أنحاء النمسا."
+      }
+    };
+
+    function setLanguage(lang) {
+      const dict = translations[lang];
+      if (!dict) return;
+
+      // Update dir + lang attributes
+      document.documentElement.lang = lang === "ar" ? "ar" : lang;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
+      // Update text content
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key] !== undefined) {
+          el.innerHTML = dict[key];
+        }
+      });
+
+      // Update placeholders
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+        const key = el.getAttribute("data-i18n-placeholder");
+        if (dict[key] !== undefined) {
+          el.setAttribute("placeholder", dict[key]);
+        }
+      });
+
+      // Button active state
+      document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+      });
+    }
+
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const lang = btn.getAttribute("data-lang");
+        setLanguage(lang);
+      });
+    });
+
+    // Initial language
+    setLanguage("de");
+  </script>
+</body>
+</html>
