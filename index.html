@@ -892,7 +892,9 @@
       });
     });
 
-    setLanguage("de");
+    const defaultLang = document.documentElement.lang || "de";
+    setLanguage(defaultLang);
+
   </script>
 </body>
 </html>
