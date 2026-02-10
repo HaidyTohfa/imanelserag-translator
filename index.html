@@ -324,7 +324,7 @@
   <!-- Top Contact Bar -->
   <div class="topbar">
     <div class="topbar-left">
-      <span data-i18n="top_contact">Tel.: +43 650 0000000 · E-Mail: haidytohfa1@gmail.com</span>
+      <span data-i18n="top_contact">Tel.: +43 650 0000000 · E-Mail: Office@iman-elsarag.at</span>
     </div>
     <div class="lang-switch">
       <span data-i18n="lang_label">Sprache:</span>
@@ -504,7 +504,7 @@
         <p data-i18n="contact_intro">
           Sie möchten ein Angebot oder haben Fragen? Schreiben Sie Iman mit einer kurzen Beschreibung Ihrer Dokumente.
         </p>
-        <p><strong>E-Mail:</strong> <a href="mailto:haidytohfa1@gmail.com">haidytohfa1@gmail.com</a></p>
+        <p><strong>E-Mail:</strong> <a href="mailto:haidytohfa1@gmail.com">Office@iman-elsarag.at</a></p>
         <p><strong data-i18n="contact_phone_label">Telefon:</strong> +43 650 0000000</p>
         <p><strong data-i18n="contact_how_title">Wie sende ich meine Dokumente?</strong></p>
         <ul>
@@ -518,27 +518,29 @@
       </div>
       <div>
         <!-- IMPORTANT: replace YOUR_FORMSPREE_ID with your real id -->
-        <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+        <form id="contactForm" action="https://formspree.io/f/mpqjwzro" method="POST" enctype="multipart/form-data">
           <label for="name" data-i18n="form_name_label">Name</label>
-          <input id="name" name="name" type="text" required data-i18n-placeholder="form_name_placeholder" />
-
+          <input id="name" name="name" type="text" required />
+        
           <label for="email" data-i18n="form_email_label">E-Mail</label>
-          <input id="email" name="email" type="email" required data-i18n-placeholder="form_email_placeholder" />
+          <input id="email" name="email" type="email" required />
+        
+          <label for="message" data-i18n="form_message_label">Nachricht</label>
+          <textarea id="message" name="message" required></textarea>
+        
+          <label for="link">Link (optional)</label>
+          <input id="link" name="link" type="url" />
 
-          <label for="message" data-i18n="form_message_label">Nachricht / Beschreibung der Dokumente</label>
-          <textarea id="message" name="message" required data-i18n-placeholder="form_message_placeholder"></textarea>
+          <label for="files">Dateien hochladen (optional)</label>
+          <input id="files" name="files" type="file" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" />
 
-          <label for="link" data-i18n="form_link_label">Link zu Ihren Dokumenten (optional)</label>
-          <input id="link" name="link" type="url" data-i18n-placeholder="form_link_placeholder" />
-
-          <!-- Helps Formspree show who the message should reply to -->
-          <input type="hidden" name="_replyto" value="" />
+        
+          <!-- Formspree metadata -->
           <input type="hidden" name="_subject" value="Neue Anfrage über die Website" />
-
-          <button type="submit" class="btn" data-i18n="form_button">
-            Anfrage absenden
-          </button>
-        </form>
+          <input type="hidden" name="_replyto" id="replyToEmail" />
+        
+          <button type="submit" class="btn">Anfrage absenden</button>
+        </form>        
 
         <!-- Optional: simple note -->
         <p style="margin-top:0.8rem; font-size:0.85rem; color:#555;" data-i18n="form_note">
@@ -558,7 +560,7 @@
   <script>
     const translations = {
       de: {
-        top_contact: "Tel.: +43 650 0000000 · E-Mail: haidytohfa1@gmail.com",
+        top_contact: "Tel.: +43 650 0000000 · E-Mail: Office@iman-elsarag.at",
         lang_label: "Sprache:",
         logo_main: "Iman",
 
@@ -653,6 +655,7 @@
         form_message_placeholder: "Welche Dokumente möchten Sie übersetzen lassen?",
         form_link_label: "Link zu Ihren Dokumenten (optional)",
         form_link_placeholder: "z.B. Google Drive / Dropbox Link",
+        form_files_label: "Dateien (optional)",
         form_button: "Anfrage absenden",
         form_note: "Nach dem Absenden erhalten Sie ggf. eine Bestätigungsseite. Wir melden uns so schnell wie möglich.",
 
@@ -660,7 +663,7 @@
       },
 
       en: {
-        top_contact: "Tel.: +43 650 0000000 · E-mail: haidytohfa1@gmail.com",
+        top_contact: "Tel.: +43 650 0000000 · E-mail: Office@iman-elsarag.at",
         lang_label: "Language:",
         logo_main: "Iman",
 
@@ -755,6 +758,7 @@
         form_message_placeholder: "Which documents would you like to have translated?",
         form_link_label: "Link to your documents (optional)",
         form_link_placeholder: "e.g. Google Drive / Dropbox link",
+        form_files_label: "Files (optional)",
         form_button: "Send request",
         form_note: "After submitting, you may see a confirmation page. We will get back to you as soon as possible.",
 
@@ -762,7 +766,7 @@
       },
 
       ar: {
-        top_contact: "هاتف: ‎+43 650 0000000 · بريد إلكتروني: haidytohfa1@gmail.com",
+        top_contact: "هاتف: ‎+43 650 0000000 · بريد إلكتروني: Office@iman-elsarag.at",
         lang_label: "اللغة:",
         logo_main: "إيمان",
 
@@ -857,12 +861,57 @@
         form_message_placeholder: "ما هي المستندات التي ترغب في ترجمتها؟",
         form_link_label: "رابط المستندات (اختياري)",
         form_link_placeholder: "مثال: رابط جوجل درايف أو دروبوكس",
+        form_files_label: "ملفات (اختياري)",
         form_button: "إرسال الطلب",
         form_note: "بعد الإرسال قد تظهر صفحة تأكيد. سنرد عليك في أقرب وقت ممكن.",
 
         footer_text: "&copy; 2025 إيمان السراج – مترجمة ومترجمة فورية عربي – ألماني. كلاغنفورت وجميع أنحاء النمسا."
       }
     };
+    
+
+    
+  const form = document.getElementById("contactForm");
+
+  if (form) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // Set reply-to dynamically
+      const replyToEl = document.getElementById("replyToEmail");
+      const emailEl = document.getElementById("email");
+      if (replyToEl && emailEl) replyToEl.value = emailEl.value;
+
+      const data = new FormData(form);
+
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: data,
+          headers: { "Accept": "application/json" }
+        });
+
+        const result = await res.json().catch(() => ({}));
+
+        if (res.ok) {
+          alert("Thank you! Your message was sent successfully.");
+          form.reset();
+        } else {
+          const msg =
+            (result && result.error) ||
+            (result && result.errors && result.errors[0] && result.errors[0].message) ||
+            "Error sending the message. Please try again.";
+          alert(msg);
+          console.error("Formspree error:", result);
+        }
+      } catch (err) {
+        alert("Network error. Please check your connection and try again.");
+        console.error(err);
+      }
+    });
+  }
+
+
 
     function setLanguage(lang) {
       const dict = translations[lang];
