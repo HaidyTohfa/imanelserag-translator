@@ -2,7 +2,7 @@
 <html lang="de" dir="ltr">
 <head>
   <meta charset="UTF-8" />
-  <title>Iman Elserag – Arabisch–Deutsch Übersetzerin &amp; Dolmetscherin</title>
+  <title>Iman El Sarag - Elshafei – Arabisch–Deutsch Übersetzerin &amp; Dolmetscherin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -227,11 +227,26 @@
     }
 
     /* Testimonials */
-    .testimonials {
-      background: #ffffff;
-      border-top: 1px solid #e0e0e0;
-      border-bottom: 1px solid #e0e0e0;
-    }
+    /* Testimonials background image */
+#testimonials {
+  position: relative;
+  background: url("images/feedback.JPG") center/cover no-repeat;
+}
+
+/* Soft white overlay for readability */
+#testimonials::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 0;
+}
+
+#testimonials > * {
+  position: relative;
+  z-index: 1;
+}
+
     .testimonial-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -252,6 +267,24 @@
     }
 
     /* Contact */
+    #contact {
+  position: relative;
+  background: url("images/CONTACT.JPG") center/cover no-repeat;
+}
+
+/* Optional: white overlay so text stays readable */
+#contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.88);
+  z-index: 0;
+}
+
+#contact > * {
+  position: relative;
+  z-index: 1;
+}
     .contact-grid {
       display: grid;
       grid-template-columns: 1.2fr 1fr;
@@ -285,10 +318,16 @@
     html[dir="rtl"] body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Naskh Arabic", "Noto Sans Arabic", "Amiri", sans-serif;
     }
-    html[dir="rtl"] .hero-inner,
-    html[dir="rtl"] .contact-grid {
-      direction: rtl;
-    }
+    /* RTL text only – keep layout direction */
+html[dir="rtl"] .hero-inner {
+  direction: ltr; /* keep layout like EN/DE */
+}
+
+html[dir="rtl"] .hero-inner * {
+  direction: rtl; /* text flows RTL */
+  text-align: right;
+}
+
     html[dir="rtl"] .hero-list li {
       margin-left: 0;
       margin-right: 1.2rem;
@@ -324,7 +363,7 @@
   <!-- Top Contact Bar -->
   <div class="topbar">
     <div class="topbar-left">
-      <span data-i18n="top_contact">Tel.: +43 650 0000000 · E-Mail: Office@iman-elsarag.at</span>
+      <span data-i18n="top_contact">Tel.: +43 676 7500332 · E-Mail: Office@iman-elsarag.at</span>
     </div>
     <div class="lang-switch">
       <span data-i18n="lang_label">Sprache:</span>
@@ -355,7 +394,7 @@
           Arabisch–Deutsch Übersetzungen &amp; Dolmetschen in ganz Österreich
         </h1>
         <h3 data-i18n="hero_subtitle">
-          Iman Elserag – professionelle Übersetzerin und Dolmetscherin für Arabisch ↔ Deutsch, mit Sitz in Klagenfurt.
+          Iman El Sarag - Elshafei – professionelle Übersetzerin und Dolmetscherin für Arabisch ↔ Deutsch,  mit Sitz in kärnten.
         </h3>
         <ul class="hero-list">
           <li data-i18n="hero_list1">
@@ -375,12 +414,12 @@
       </div>
       <div>
         <div class="hero-card">
-          <img src="images/PP.JPG" alt="Porträt von Iman Elserag" class="profile-photo" />
-          <div class="profile-name" data-i18n="profile_name">Iman Elserag</div>
+          <img src="images/PP.JPG" alt="Porträt von Iman El Sarag - Elshafei" class="profile-photo" />
+          <div class="profile-name" data-i18n="profile_name">Iman El Sarag - Elshafei</div>
           <div class="profile-title" data-i18n="profile_title">
             Arabisch–Deutsch Übersetzerin &amp; Dolmetscherin
           </div>
-          <p data-i18n="profile_location"><strong>Standort:</strong> Klagenfurt am Wörthersee</p>
+          <p data-i18n="profile_location"><strong>Standort:</strong>  Otwinusstraße 24, 9313 St. Georgen am Längsee</p>
           <p data-i18n="profile_region"><strong>Region:</strong> Online &amp; Einsätze in ganz Österreich</p>
         </div>
       </div>
@@ -391,7 +430,7 @@
   <section id="services" class="section">
     <h2 data-i18n="services_title">Übersetzungs- &amp; Dolmetschleistungen</h2>
     <p data-i18n="services_intro">
-      Iman bietet professionelle Sprachdienstleistungen für Privatpersonen, Unternehmen und Institutionen – mit Fokus auf Arabisch und Deutsch.
+      El Sarag bietet professionelle Sprachdienstleistungen für Privatpersonen, Unternehmen und Institutionen – mit Fokus auf Arabisch und Deutsch.
     </p>
     <div class="cards">
       <div class="card">
@@ -422,7 +461,7 @@
   <section id="fields" class="section">
     <h2 data-i18n="fields_title">Fachgebiete</h2>
     <p data-i18n="fields_intro">
-      Dank ihrer Erfahrung deckt Iman verschiedene Fachgebiete ab – von Alltagsdokumenten bis hin zu speziellen Texten.
+      Dank ihrer Erfahrung deckt El Sarag verschiedene Fachgebiete ab – von Alltagsdokumenten bis hin zu speziellen Texten.
     </p>
     <div class="cards">
       <div class="card">
@@ -456,11 +495,11 @@
   <section id="locations" class="section">
     <h2 data-i18n="locations_title">Standort &amp; Einsatzgebiet</h2>
     <p data-i18n="locations_intro">
-      Iman lebt in Klagenfurt am Wörthersee, bietet ihre Leistungen jedoch für ganz Österreich an – persönlich oder online.
+      El Sarag lebt in  Otwinusstraße 24, 9313 St. Georgen am Längsee, bietet ihre Leistungen jedoch für ganz Österreich an – persönlich oder online.
     </p>
     <div class="location-grid">
       <div class="location">
-        <h3 data-i18n="location1_title">Klagenfurt am Wörthersee</h3>
+        <h3 data-i18n="location1_title"> Otwinusstraße 24, 9313 St. Georgen am Längsee</h3>
         <p data-i18n="location1_text1">Termine nach Vereinbarung.</p>
         <p data-i18n="location1_text2">Treffen in Klagenfurt oder Umgebung möglich.</p>
       </div>
@@ -480,7 +519,7 @@
   <section id="testimonials" class="section testimonials">
     <h2 data-i18n="testimonials_title">Feedback von Kund:innen</h2>
     <p data-i18n="testimonials_intro">
-      Einige Eindrücke von Menschen, die bereits mit Iman zusammengearbeitet haben.
+      Einige Eindrücke von Menschen, die bereits mit El Sarag zusammengearbeitet haben.
     </p>
     <div class="testimonial-list">
       <div class="testimonial"><p data-i18n="test1_text"></p><strong data-i18n="test1_name"></strong></div>
@@ -502,10 +541,10 @@
     <div class="contact-grid">
       <div>
         <p data-i18n="contact_intro">
-          Sie möchten ein Angebot oder haben Fragen? Schreiben Sie Iman mit einer kurzen Beschreibung Ihrer Dokumente.
+          Sie möchten ein Angebot oder haben Fragen? Schreiben Sie El Sarag mit einer kurzen Beschreibung Ihrer Dokumente.
         </p>
         <p><strong>E-Mail:</strong> <a href="mailto:haidytohfa1@gmail.com">Office@iman-elsarag.at</a></p>
-        <p><strong data-i18n="contact_phone_label">Telefon:</strong> +43 650 0000000</p>
+        <p><strong data-i18n="contact_phone_label">Telefon:</strong> +43 676 7500332</p>
         <p><strong data-i18n="contact_how_title">Wie sende ich meine Dokumente?</strong></p>
         <ul>
           <li data-i18n="contact_how_1">
@@ -531,8 +570,8 @@
           <label for="link">Link (optional)</label>
           <input id="link" name="link" type="url" />
 
-          <label for="files">Dateien hochladen (optional)</label>
-          <input id="files" name="files" type="file" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" />
+          <!-- <label for="files">Dateien hochladen (optional)</label>
+          <input id="files" name="files" type="file" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" /> -->
 
         
           <!-- Formspree metadata -->
@@ -553,14 +592,14 @@
   <!-- Footer -->
   <footer>
     <span data-i18n="footer_text">
-      &copy; 2025 Iman Elserag – Arabisch–Deutsch Übersetzerin &amp; Dolmetscherin. Klagenfurt &amp; ganz Österreich.
+      &copy; 2020 Iman El Sarag - Elshafei – Arabisch–Deutsch Übersetzerin &amp; Dolmetscherin. Klagenfurt &amp; ganz Österreich.
     </span>
   </footer>
 
   <script>
     const translations = {
       de: {
-        top_contact: "Tel.: +43 650 0000000 · E-Mail: Office@iman-elsarag.at",
+        top_contact: "Tel.: +43 676 7500332 · E-Mail: Office@iman-elsarag.at",
         lang_label: "Sprache:",
         logo_main: "Iman",
 
@@ -572,20 +611,20 @@
         nav_contact: "Kontakt",
 
         hero_title: "Arabisch–Deutsch Übersetzungen &amp; Dolmetschen in ganz Österreich",
-        hero_subtitle: "Iman Elserag – professionelle Übersetzerin und Dolmetscherin für Arabisch ↔ Deutsch, mit Sitz in Klagenfurt.",
+        hero_subtitle: "Iman El Sarag - Elshafei – professionelle Übersetzerin und Dolmetscherin für Arabisch ↔ Deutsch,  mit Sitz in kärnten.",
         hero_list1: "Übersetzungen von Deutsch nach Arabisch und von Arabisch nach Deutsch",
         hero_list2: "Unterstützung bei Behördenwegen, Verträgen und offiziellen Dokumenten",
         hero_list3: "Online und vor Ort – flexibel in ganz Österreich",
         hero_cta1: "Anfrage &amp; Angebot",
         hero_cta2: "Leistungen ansehen",
 
-        profile_name: "Iman Elserag",
+        profile_name: "Iman El Sarag - Elshafei",
         profile_title: "Arabisch–Deutsch Übersetzerin &amp; Dolmetscherin",
-        profile_location: "<strong>Standort:</strong> Klagenfurt am Wörthersee",
+        profile_location: "<strong>Standort:</strong>  Otwinusstraße 24, 9313 St. Georgen am Längsee",
         profile_region: "<strong>Region:</strong> Online &amp; Einsätze in ganz Österreich",
 
         services_title: "Übersetzungs- &amp; Dolmetschleistungen",
-        services_intro: "Iman bietet professionelle Sprachdienstleistungen für Privatpersonen, Unternehmen und Institutionen – mit Fokus auf Arabisch und Deutsch.",
+        services_intro: "El Sarag bietet professionelle Sprachdienstleistungen für Privatpersonen, Unternehmen und Institutionen – mit Fokus auf Arabisch und Deutsch.",
         service1_badge: "Übersetzung",
         service1_title: "Schriftliche Übersetzungen",
         service1_text: "Urkunden, Zeugnisse, Verträge, Bescheide, Korrespondenz, Lebensläufe und weitere Dokumente von Arabisch nach Deutsch und umgekehrt.",
@@ -597,7 +636,7 @@
         service3_text: "Direkter Kontakt mit der Übersetzerin, klare Absprachen, transparente Preise und vertraulicher Umgang mit sensiblen Unterlagen.",
 
         fields_title: "Fachgebiete",
-        fields_intro: "Dank ihrer Erfahrung deckt Iman verschiedene Fachgebiete ab – von Alltagsdokumenten bis hin zu speziellen Texten.",
+        fields_intro: "Dank ihrer Erfahrung deckt El Sarag verschiedene Fachgebiete ab – von Alltagsdokumenten bis hin zu speziellen Texten.",
         field1_title: "Alltag &amp; Migration",
         field1_text: "Aufenthaltstitel, Meldezettel, Bestätigungen, Anträge bei Behörden und soziale Einrichtungen.",
         field2_title: "Recht &amp; Verträge",
@@ -608,8 +647,8 @@
         field4_text: "Ärztliche Befunde, Bestätigungen, Gutachten, Informationsmaterial für Patient:innen.",
 
         locations_title: "Standort &amp; Einsatzgebiet",
-        locations_intro: "Iman lebt in Klagenfurt am Wörthersee, bietet ihre Leistungen jedoch für ganz Österreich an – persönlich oder online.",
-        location1_title: "Klagenfurt am Wörthersee",
+        locations_intro: "El Sarag lebt in  Otwinusstraße 24, 9313 St. Georgen am Längsee, bietet ihre Leistungen jedoch für ganz Österreich an – persönlich oder online.",
+        location1_title: " Otwinusstraße 24, 9313 St. Georgen am Längsee",
         location1_text1: "Termine nach Vereinbarung.",
         location1_text2: "Treffen in Klagenfurt oder Umgebung möglich.",
         location2_title: "Ganz Österreich",
@@ -617,7 +656,7 @@
         location2_text2: "Bei Bedarf Anreise für Termine (nach Absprache).",
 
         testimonials_title: "Feedback von Kund:innen",
-        testimonials_intro: "Einige Eindrücke von Menschen, die bereits mit Iman zusammengearbeitet haben.",
+        testimonials_intro: "Einige Eindrücke von Menschen, die bereits mit El Sarag zusammengearbeitet haben.",
 
         test1_text: "„Ich habe mehrere Dokumente bei ihr übersetzen lassen und war begeistert. Die Übersetzungen waren präzise und professionell, und sie war bereits nach zwei Tagen fertig. Absolut empfehlenswert!“",
         test1_name: "— Feedback 1",
@@ -641,7 +680,7 @@
         test10_name: "— Feedback 10",
 
         contact_title: "Kontakt &amp; Dokumente senden",
-        contact_intro: "Sie möchten ein Angebot oder haben Fragen? Schreiben Sie Iman mit einer kurzen Beschreibung Ihrer Dokumente.",
+        contact_intro: "Sie möchten ein Angebot oder haben Fragen? Schreiben Sie El Sarag mit einer kurzen Beschreibung Ihrer Dokumente.",
         contact_phone_label: "Telefon:",
         contact_how_title: "Wie sende ich meine Dokumente?",
         contact_how_1: "Sie können Ihre Unterlagen direkt per E-Mail als PDF/JPG senden.",
@@ -659,11 +698,11 @@
         form_button: "Anfrage absenden",
         form_note: "Nach dem Absenden erhalten Sie ggf. eine Bestätigungsseite. Wir melden uns so schnell wie möglich.",
 
-        footer_text: "&copy; 2025 Iman Elserag – Arabisch–Deutsch Übersetzerin &amp; Dolmetscherin. Klagenfurt &amp; ganz Österreich."
+        footer_text: "&copy; 2020 Iman El Sarag - Elshafei – Arabisch–Deutsch Übersetzerin &amp; Dolmetscherin. Klagenfurt &amp; ganz Österreich."
       },
 
       en: {
-        top_contact: "Tel.: +43 650 0000000 · E-mail: Office@iman-elsarag.at",
+        top_contact: "Tel.: +43 676 7500332 · E-mail: Office@iman-elsarag.at",
         lang_label: "Language:",
         logo_main: "Iman",
 
@@ -675,20 +714,20 @@
         nav_contact: "Contact",
 
         hero_title: "Arabic–German translation & interpreting across Austria",
-        hero_subtitle: "Iman Elserag – professional Arabic ↔ German translator and interpreter based in Klagenfurt.",
+        hero_subtitle: "Iman El Sarag - Elshafei – professional Arabic ↔ German translator and interpreter based in Carinthia.",
         hero_list1: "Translations from German into Arabic and from Arabic into German",
         hero_list2: "Support with authorities, contracts and official documents",
         hero_list3: "Online and on-site – flexible throughout Austria",
         hero_cta1: "Request & quote",
         hero_cta2: "View services",
 
-        profile_name: "Iman Elserag",
+        profile_name: "Iman El Sarag - Elshafei",
         profile_title: "Arabic–German translator & interpreter",
-        profile_location: "<strong>Location:</strong> Klagenfurt am Wörthersee",
+        profile_location: "<strong>Location:</strong>  Otwinusstraße 24, 9313 St. Georgen am Längsee",
         profile_region: "<strong>Region:</strong> Online & assignments throughout Austria",
 
         services_title: "Translation & interpreting services",
-        services_intro: "Iman offers professional language services for private clients, companies and institutions – specialising in Arabic and German.",
+        services_intro: "El Sarag offers professional language services for private clients, companies and institutions – specialising in Arabic and German.",
         service1_badge: "Translation",
         service1_title: "Written translations",
         service1_text: "Certificates, diplomas, contracts, official decisions, correspondence, CVs and other documents from Arabic to German and vice versa.",
@@ -700,7 +739,7 @@
         service3_text: "Direct contact with your translator, clear agreements, transparent prices and confidential handling of sensitive documents.",
 
         fields_title: "Areas of expertise",
-        fields_intro: "With her experience, Iman covers a wide range of topics – from everyday documents to specialised texts.",
+        fields_intro: "With her experience, El Sarag covers a wide range of topics – from everyday documents to specialised texts.",
         field1_title: "Everyday life & migration",
         field1_text: "Residence permits, registration forms, confirmations, applications to public authorities and social services.",
         field2_title: "Law & contracts",
@@ -711,8 +750,8 @@
         field4_text: "Medical reports, confirmations, expert opinions, information material for patients.",
 
         locations_title: "Location & service area",
-        locations_intro: "Iman lives in Klagenfurt am Wörthersee but offers her services throughout Austria – in person or online.",
-        location1_title: "Klagenfurt am Wörthersee",
+        locations_intro: "El Sarag lives in  Otwinusstraße 24, 9313 St. Georgen am Längsee but offers her services throughout Austria – in person or online.",
+        location1_title: " Otwinusstraße 24, 9313 St. Georgen am Längsee",
         location1_text1: "Appointments by arrangement.",
         location1_text2: "Meetings in Klagenfurt or the surrounding area possible.",
         location2_title: "All of Austria",
@@ -720,7 +759,7 @@
         location2_text2: "Travel to appointments possible if required (by agreement).",
 
         testimonials_title: "Client feedback",
-        testimonials_intro: "Here are some impressions from people who have already worked with Iman.",
+        testimonials_intro: "Here are some impressions from people who have already worked with El Sarag.",
 
         test1_text: "“I had several documents translated by her and was impressed. The translations were precise and professional, and she finished in just two days. Highly recommended!”",
         test1_name: "— Feedback 1",
@@ -744,7 +783,7 @@
         test10_name: "— Feedback 10",
 
         contact_title: "Contact & send documents",
-        contact_intro: "Would you like a quote or do you have questions? Send Iman a short description of your documents.",
+        contact_intro: "Would you like a quote or do you have questions? Send El Sarag a short description of your documents.",
         contact_phone_label: "Phone:",
         contact_how_title: "How can I send my documents?",
         contact_how_1: "You can send your files directly by e-mail as PDF/JPG.",
@@ -762,11 +801,11 @@
         form_button: "Send request",
         form_note: "After submitting, you may see a confirmation page. We will get back to you as soon as possible.",
 
-        footer_text: "&copy; 2025 Iman Elserag – Arabic–German translator & interpreter. Klagenfurt & all of Austria."
+        footer_text: "&copy; 2020 Iman El Sarag - Elshafei – Arabic–German translator & interpreter. Klagenfurt & all of Austria."
       },
 
       ar: {
-        top_contact: "هاتف: ‎+43 650 0000000 · بريد إلكتروني: Office@iman-elsarag.at",
+        top_contact: "هاتف: ‎+43 676 7500332 · بريد إلكتروني: Office@iman-elsarag.at",
         lang_label: "اللغة:",
         logo_main: "إيمان",
 
@@ -778,20 +817,20 @@
         nav_contact: "التواصل",
 
         hero_title: "خدمات الترجمة والتحرير الفوري عربي – ألماني في جميع أنحاء النمسا",
-        hero_subtitle: "إيمان السراج – مترجمة ومترجمة فورية محترفة بين العربية والألمانية، مقرّها في كلاغنفورت.",
+        hero_subtitle: "إيمان السراج – الشافعي – مترجمة ومترجمة فورية محترفة بين العربية والألمانية، مقرّها في كارينثيا.",
         hero_list1: "ترجمة من الألمانية إلى العربية ومن العربية إلى الألمانية",
         hero_list2: "مساعدة في التعامل مع الدوائر الرسمية والعقود والوثائق الرسمية",
         hero_list3: "خدمة عبر الإنترنت أو حضورياً في مختلف مدن النمسا",
         hero_cta1: "طلب عرض سعر",
         hero_cta2: "عرض الخدمات",
 
-        profile_name: "إيمان السراج",
+        profile_name: "إيمان السراج – الشافعي",
         profile_title: "مترجمة ومترجمة فورية عربي – ألماني",
-        profile_location: "<strong>الموقع:</strong> كلاغنفورت أم ورترزي",
+        profile_location: "<strong>الموقع:</strong> أوتفينوس شتراسه 24، 9313 سانت جورجن آم لينغزي",
         profile_region: "<strong>مجال العمل:</strong> عبر الإنترنت وفي جميع أنحاء النمسا",
 
         services_title: "خدمات الترجمة والتحرير الفوري",
-        services_intro: "تقدّم إيمان خدمات لغوية احترافية للأفراد والشركات والمؤسسات، مع تركيز خاص على اللغتين العربية والألمانية.",
+        services_intro: "تقدّم السراج خدمات لغوية احترافية للأفراد والشركات والمؤسسات، مع تركيز خاص على اللغتين العربية والألمانية.",
         service1_badge: "ترجمة",
         service1_title: "ترجمة مكتوبة",
         service1_text: "شهادات، عقود، قرارات رسمية، مراسلات، سير ذاتية وغيرها من الوثائق من العربية إلى الألمانية وبالعكس.",
@@ -803,7 +842,7 @@
         service3_text: "تواصل مباشر مع المترجمة، اتفاقات واضحة، أسعار شفافة، وسرية تامة في التعامل مع المستندات الحساسة.",
 
         fields_title: "مجالات التخصص",
-        fields_intro: "بفضل خبرتها تغطي إيمان عدة مجالات – من الوثائق اليومية إلى النصوص المتخصصة.",
+        fields_intro: "بفضل خبرتها تغطي السراج عدة مجالات – من الوثائق اليومية إلى النصوص المتخصصة.",
         field1_title: "الحياة اليومية والهجرة",
         field1_text: "تصاريح الإقامة، استمارات التسجيل، الشهادات الرسمية، الطلبات للدوائر الحكومية والمؤسسات الاجتماعية.",
         field2_title: "القانون والعقود",
@@ -814,8 +853,8 @@
         field4_text: "تقارير طبية، شهادات، تقارير خبرة، مواد معلوماتية للمرضى.",
 
         locations_title: "الموقع ونطاق الخدمة",
-        locations_intro: "تقيم إيمان في كلاغنفورت أم ورترزي، لكنها تقدّم خدماتها في جميع أنحاء النمسا – حضورياً وعبر الإنترنت.",
-        location1_title: "كلاغنفورت أم ورترزي",
+        locations_intro: "تقيم السراج في أوتفينوس شتراسه 24، 9313 سانت جورجن آم لينغزي، لكنها تقدّم خدماتها في جميع أنحاء النمسا – حضورياً وعبر الإنترنت.",
+        location1_title: "أوتفينوس شتراسه 24، 9313 سانت جورجن آم لينغزي",
         location1_text1: "المواعيد حسب الاتفاق.",
         location1_text2: "إمكانية اللقاء في كلاغنفورت أو المناطق المجاورة.",
         location2_title: "جميع أنحاء النمسا",
@@ -865,7 +904,7 @@
         form_button: "إرسال الطلب",
         form_note: "بعد الإرسال قد تظهر صفحة تأكيد. سنرد عليك في أقرب وقت ممكن.",
 
-        footer_text: "&copy; 2025 إيمان السراج – مترجمة ومترجمة فورية عربي – ألماني. كلاغنفورت وجميع أنحاء النمسا."
+        footer_text: "&copy; 2020 إيمان السراج – الشافعي – مترجمة ومترجمة فورية عربي – ألماني. كلاغنفورت وجميع أنحاء النمسا."
       }
     };
     
